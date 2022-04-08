@@ -9,13 +9,26 @@ function computerPlay() {
 }
 
 function playerPlay() {
-    let playerSelection = prompt(`Chose: ${choices}`, '');
-    playerSelection = playerSelection.slice(0, 1).toLocaleUpperCase() + playerSelection.slice(1).toLocaleLowerCase();
-    console.log(playerSelection)
-    return playerSelection
+    let playerSelection = ''
+
+    while (!(playerSelection === 'Rock' || playerSelection === 'Paper' || playerSelection === 'Scissors')) {
+        playerSelection = prompt(`Chose: ${choices}`, '');
+        playerSelection = playerSelection.slice(0, 1).toLocaleUpperCase() + playerSelection.slice(1).toLocaleLowerCase();
+        console.log(playerSelection);
+    }
+
+    console.log(playerSelection);
+    return playerSelection;
 }
 
+function gameResult() {
+    let result = computerPlay() + playerPlay();
+    console.log(result);
+    return result;
+}
 
+function playRound() {
+    console.log(computerPlay() + playerPlay());
+}
 
-playerPlay()
-computerPlay()
+playRound()
