@@ -8,12 +8,17 @@ function computerPlay() {
     return computerSelection;
 }
 
+function cleanAns(ans) {
+    ans = ans.slice(0, 1).toLocaleUpperCase() + ans.slice(1).toLocaleLowerCase();
+    return ans
+}
+
 function playerPlay() {
     let playerSelection = ''
 
     while (!(playerSelection === 'Rock' || playerSelection === 'Paper' || playerSelection === 'Scissors')) {
-        playerSelection = prompt(`Chose: ${choices}`, '');
-        playerSelection = playerSelection.slice(0, 1).toLocaleUpperCase() + playerSelection.slice(1).toLocaleLowerCase();
+        playerSelection = cleanAns(prompt(`Chose: ${choices}`, ''));
+        //playerSelection = playerSelection.slice(0, 1).toLocaleUpperCase() + playerSelection.slice(1).toLocaleLowerCase();
         console.log(playerSelection);
     }
 
@@ -28,7 +33,7 @@ function gameResult() {
 }
 
 function playRound() {
-    console.log(computerPlay() + playerPlay());
+    console.log(gameResult());
 }
 
 playRound()
