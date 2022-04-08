@@ -18,7 +18,6 @@ function playerPlay() {
 
     while (!(playerSelection === 'Rock' || playerSelection === 'Paper' || playerSelection === 'Scissors')) {
         playerSelection = cleanAns(prompt(`Chose: ${choices}`, ''));
-        //playerSelection = playerSelection.slice(0, 1).toLocaleUpperCase() + playerSelection.slice(1).toLocaleLowerCase();
         console.log(playerSelection);
     }
 
