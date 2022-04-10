@@ -16,9 +16,10 @@ function cleanAns(ans) {
 }
 
 function playerPlay() {
+    playerSelection = '';
     while (!(playerSelection === 'Rock' || playerSelection === 'Paper' || playerSelection === 'Scissors')) {
         playerSelection = cleanAns(prompt(`Chose: ${choices}`, ''));
-        console.log(playerSelection);
+        //    console.log(playerSelection);
     }
 
     console.log(playerSelection);
@@ -28,18 +29,31 @@ function playerPlay() {
 function gameResult() {
     if (playerSelection === computerSelection) {
         console.log('Tie Game');
+        return 0
     } else if (playerSelection === 'Rock' && computerSelection === 'Scissors' || playerSelection === 'Paper' && computerSelection === 'Rock' || playerSelection === 'Scissors' && computerSelection === 'Paper') {
         console.log('You Win!')
+        return 1
     } else {
         console.log('You Lose!')
+        return -1
     }
-
 }
 
 function playRound() {
     computerPlay();
     playerPlay();
-    gameResult();
+    return gameResult();
 }
 
-playRound()
+function game() {
+    let score = 0
+    for (let i = 0; i < 5; i++) {
+        score += playRound();
+        console.log(`Current Score: ${score}`)
+    }
+
+}
+
+
+//console.log(playRound());
+game();
