@@ -51,9 +51,14 @@ function game() {
         score += playRound();
         console.log(`Current Score: ${score}`)
     }
-
+    if (score > 0) {
+        console.log(`You Won by ${score} Points!`)
+    } else if (score < 0) {
+        console.log(`You Lost by ${score * -1} Points`)
+    } else {
+        console.log(`Tie Game!`)
+    }
 }
-
 
 //console.log(playRound());
 game();
