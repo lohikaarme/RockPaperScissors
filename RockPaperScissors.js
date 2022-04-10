@@ -28,7 +28,7 @@ function playerPlay() {
 function gameResult() {
     if (playerSelection === computerSelection) {
         console.log('Tie Game');
-    } else if (playerSelection === 'Rock' && computerSelection === 'Scissors' || playerSelection === 'Paper' && computerSelection === 'Rock' || playerSelection === 'Scissors' && computerSelection === 'Paper' ) {
+    } else if (playerSelection === 'Rock' && computerSelection === 'Scissors' || playerSelection === 'Paper' && computerSelection === 'Rock' || playerSelection === 'Scissors' && computerSelection === 'Paper') {
         console.log('You Win!')
     } else {
         console.log('You Lose!')
@@ -39,7 +39,7 @@ function gameResult() {
 function playRound() {
     computerPlay();
     playerPlay();
-    console.log(gameResult());
+    gameResult();
 }
 
 playRound()
