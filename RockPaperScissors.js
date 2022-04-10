@@ -1,9 +1,11 @@
-let choices = [`Rock`, `Paper`, `Scissors`];
+let choices = [`Rock`, `Paper`, `Scissors`],
+    computerSelection = '',
+    playerSelection = '';
 
 
 function computerPlay() {
     let num = Math.floor(Math.random() * 3);
-    let computerSelection = choices[num];
+    computerSelection = choices[num];
     console.log(computerSelection);
     return computerSelection;
 }
@@ -14,8 +16,6 @@ function cleanAns(ans) {
 }
 
 function playerPlay() {
-    let playerSelection = ''
-
     while (!(playerSelection === 'Rock' || playerSelection === 'Paper' || playerSelection === 'Scissors')) {
         playerSelection = cleanAns(prompt(`Chose: ${choices}`, ''));
         console.log(playerSelection);
@@ -26,12 +26,19 @@ function playerPlay() {
 }
 
 function gameResult() {
-    let result = computerPlay() + playerPlay();
-    console.log(result);
-    return result;
+    if (playerSelection === computerSelection) {
+        console.log('Tie Game');
+    } else if (playerSelection === 'Rock' && computerSelection === 'Scissors' || playerSelection === 'Paper' && computerSelection === 'Rock' || playerSelection === 'Scissors' && computerSelection === 'Paper' ) {
+        console.log('You Win!')
+    } else {
+        console.log('You Lose!')
+    }
+
 }
 
 function playRound() {
+    computerPlay();
+    playerPlay();
     console.log(gameResult());
 }
 
