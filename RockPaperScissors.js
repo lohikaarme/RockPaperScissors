@@ -6,7 +6,7 @@ let choices = [`Rock`, `Paper`, `Scissors`],
 function computerPlay() {
     let num = Math.floor(Math.random() * 3);
     computerSelection = choices[num];
-    console.log(computerSelection);
+    //console.log(computerSelection);
     return computerSelection;
 }
 
@@ -22,20 +22,22 @@ function playerPlay() {
         //    console.log(playerSelection);
     }
 
-    console.log(playerSelection);
+    //console.log(playerSelection);
     return playerSelection;
 }
 
 function gameResult() {
+    console.log(`Player Choice: ${playerSelection} \nComputer Choice: ${computerSelection}`)
+
     if (playerSelection === computerSelection) {
-        console.log('Tie Game');
-        return 0
+        console.log('Tie Game!');
+        return 0;
     } else if (playerSelection === 'Rock' && computerSelection === 'Scissors' || playerSelection === 'Paper' && computerSelection === 'Rock' || playerSelection === 'Scissors' && computerSelection === 'Paper') {
-        console.log('You Win!')
-        return 1
+        console.log(`${playerSelection} Beats ${computerSelection}: You Won!`);
+        return 1;
     } else {
-        console.log('You Lose!')
-        return -1
+        console.log(`${computerSelection} Beats ${playerSelection}: You Lose!`);
+        return -1;
     }
 }
 
@@ -49,14 +51,14 @@ function game() {
     let score = 0
     for (let i = 0; i < 5; i++) {
         score += playRound();
-        console.log(`Current Score: ${score}`)
+        console.log(`Round ${i + 1} Score: ${score}`);
     }
     if (score > 0) {
-        console.log(`You Won by ${score} Points!`)
+        console.log(`You Won the Match by ${score} Points!`);
     } else if (score < 0) {
-        console.log(`You Lost by ${score * -1} Points`)
+        console.log(`You Lost the Match by ${score * -1} Points!`);
     } else {
-        console.log(`Tie Game!`)
+        console.log(`Tie Game!`);
     }
 }
 
