@@ -18,7 +18,7 @@ function cleanAns(ans) {
 function playerPlay() {
     playerSelection = '';
     while (!(playerSelection === 'Rock' || playerSelection === 'Paper' || playerSelection === 'Scissors')) {
-        playerSelection = cleanAns(prompt(`Chose: ${choices}`, ''));
+        playerSelection = cleanAns(prompt(`Chose: ${choices.join(', ')}`, ''));
         //    console.log(playerSelection);
     }
 
