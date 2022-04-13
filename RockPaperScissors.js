@@ -1,31 +1,18 @@
-let choices = [`Rock`, `Paper`, `Scissors`],
-    computerSelection = '',
-    playerSelection = '';
+let choices = [`Rock`, `Paper`, `Scissors`];
 
-function computerPlay() {
-    let num = Math.floor(Math.random() * 3);
-    computerSelection = choices[num];
-    //console.log(computerSelection);
-    return computerSelection;
-}
+let computerPlay = () => choices[Math.floor(Math.random() * 3)]
 
-function cleanAns(ans) {
-    ans = ans.slice(0, 1).toLocaleUpperCase() + ans.slice(1).toLocaleLowerCase();
-    return ans
-}
+let cleanAns = (ans) => ans.slice(0, 1).toUpperCase() + ans.slice(1).toLowerCase();
 
-function playerPlay() {
+let playerPlay = () => {
     playerSelection = '';
     while (!(playerSelection === 'Rock' || playerSelection === 'Paper' || playerSelection === 'Scissors')) {
         playerSelection = cleanAns(prompt(`Chose: ${choices.join(', ')}`, ''));
-        //    console.log(playerSelection);
     }
-
-    //console.log(playerSelection);
     return playerSelection;
 }
 
-function gameResult() {
+let gameResult = (playerSelection, computerSelection) => {
     console.log(`Player Choice: ${playerSelection} \nComputer Choice: ${computerSelection}`)
 
     if (playerSelection === computerSelection) {
@@ -40,13 +27,9 @@ function gameResult() {
     }
 }
 
-function playRound() {
-    computerPlay();
-    playerPlay();
-    return gameResult();
-}
+let playRound = () => gameResult(playerPlay(),computerPlay());
 
-function game() {
+let game = () => {
     let score = 0
     for (let i = 0; i < 5; i++) {
         score += playRound();
@@ -57,9 +40,8 @@ function game() {
     } else if (score < 0) {
         console.log(`You Lost the Match by ${score * -1} Points!`);
     } else {
-        console.log(`Tie Game!`);
+        console.log(`Match Tied!`);
     }
 }
 
-//console.log(playRound());
 game();
