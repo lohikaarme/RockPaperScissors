@@ -2,7 +2,6 @@ let choices = [`Rock`, `Paper`, `Scissors`],
     computerSelection = '',
     playerSelection = '';
 
-
 function computerPlay() {
     let num = Math.floor(Math.random() * 3);
     computerSelection = choices[num];
