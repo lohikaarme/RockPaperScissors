@@ -1,47 +1,77 @@
 let choices = [`Rock`, `Paper`, `Scissors`];
+let playerScore = 0;
+let compScore = 0;
+let bestOf = 5;
+
+const playerChoice = document.querySelector('#playerChoice');
+const compChoice = document.querySelector('#compChoice');
+const result = document.querySelector('#result');
+const endResult = document.querySelector('#endResult');
+const plyScore = document.querySelector('#playerScore');
+const comScore = document.querySelector('#compScore');
+
 
 let computerPlay = () => choices[Math.floor(Math.random() * 3)]
 
-let cleanAns = (ans) => ans.slice(0, 1).toUpperCase() + ans.slice(1).toLowerCase();
-
-let playerPlay = () => {
-    playerSelection = '';
-    while (!(playerSelection === 'Rock' || playerSelection === 'Paper' || playerSelection === 'Scissors')) {
-        playerSelection = cleanAns(prompt(`Chose: ${choices.join(', ')}`, ''));
-    }
-    return playerSelection;
-}
-
-let gameResult = (playerSelection, computerSelection) => {
-    console.log(`Player Choice: ${playerSelection} \nComputer Choice: ${computerSelection}`)
+let playRound = (playerSelection, computerSelection) => {
+    playerChoice.textContent = `Player Choice: ${playerSelection}`;
+    compChoice.textContent = `Computer Choice: ${computerSelection}`;
 
     if (playerSelection === computerSelection) {
-        console.log('Tie Game!');
-        return 0;
+        result.textContent = 'Tie Game!';
     } else if (playerSelection === 'Rock' && computerSelection === 'Scissors' || playerSelection === 'Paper' && computerSelection === 'Rock' || playerSelection === 'Scissors' && computerSelection === 'Paper') {
-        console.log(`${playerSelection} Beats ${computerSelection}: You Won!`);
-        return 1;
+        result.textContent = `${playerSelection} beats ${computerSelection}: You Win!`;
+        playerScore += 1;
     } else {
-        console.log(`${computerSelection} Beats ${playerSelection}: You Lose!`);
-        return -1;
+        result.textContent = `${computerSelection} beats ${playerSelection}: You Lose!`;
+        compScore += 1;
     }
+    plyScore.textContent = `Player score: ${playerScore}`;
+    comScore.textContent = `Computer score: ${compScore}`;
 }
 
-let playRound = () => gameResult(playerPlay(),computerPlay());
+
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener('click', () => playRound(button.id, computerPlay()))
+})
+
+
 
 let game = () => {
-    let score = 0
+
     for (let i = 0; i < 5; i++) {
-        score += playRound();
-        console.log(`Round ${i + 1} Score: ${score}`);
+        //score += playRound();
+        //score.textContent = `Round ${i + 1} Score: ${score}`;
     }
-    if (score > 0) {
-        console.log(`You Won the Match by ${score} Points!`);
-    } else if (score < 0) {
-        console.log(`You Lost the Match by ${score * -1} Points!`);
+    if (playerScore == bestOf) {
+        endResult.textContent = `You Won the Match!`;
+    } else if (compScore == bestOf) {
+        endResult.textContent = `You Lost the Match!`;
     } else {
-        console.log(`Match Tied!`);
+        endResult.textContent = `Match Tied!`;
     }
 }
 
 game();
+
+
+
+/*
+let game = () => {
+    let score = 0
+    for (let i = 0; i < 5; i++) {
+        score += playRound();
+        score.textContent = `Round ${i + 1} Score: ${score}`;
+    }
+    if (score > 0) {
+        score.textContent = `You Won the Match by ${score} Points!`;
+    } else if (score < 0) {
+        score.textContent = `You Lost the Match by ${score * -1} Points!`;
+    } else {
+        score.textContent = `Match Tied!`;
+    }
+}
+
+game();
+*/
