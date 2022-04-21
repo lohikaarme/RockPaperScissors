@@ -6,9 +6,9 @@ let bestOf = 5;
 const playerChoice = document.querySelector('#playerChoice');
 const compChoice = document.querySelector('#compChoice');
 const result = document.querySelector('#result');
-const endResult = document.querySelector('#endResult');
 const plyScore = document.querySelector('#playerScore');
 const comScore = document.querySelector('#compScore');
+const endResult = document.querySelector('#endResult');
 
 
 let computerPlay = () => choices[Math.floor(Math.random() * 3)]
@@ -28,8 +28,18 @@ let playRound = (playerSelection, computerSelection) => {
     }
     plyScore.textContent = `Player score: ${playerScore}`;
     comScore.textContent = `Computer score: ${compScore}`;
+    checkMatch(playerScore, compScore);
 }
 
+let checkMatch = (playerScore, compScore) => {
+    if (playerScore == bestOf) {
+        endResult.textContent = `Player Wins!`;
+    } else if (compScore == bestOf) {
+        endResult.textContent = `Computer Wins!`;
+    } else {
+        endResult.textContent = `It's anyone's game!`;
+    }
+}
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
@@ -38,7 +48,7 @@ buttons.forEach((button) => {
 
 
 
-let game = () => {
+/*let game = () => {
 
     for (let i = 0; i < 5; i++) {
         //score += playRound();
@@ -54,7 +64,7 @@ let game = () => {
 }
 
 game();
-
+*/
 
 
 /*
