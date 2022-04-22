@@ -26,8 +26,8 @@ let playRound = (playerSelection, computerSelection) => {
         result.textContent = `${computerSelection} beats ${playerSelection}: You Lose!`;
         compScore += 1;
     }
-    plyScore.textContent = `Player score: ${playerScore}`;
-    comScore.textContent = `Computer score: ${compScore}`;
+    plyScore.textContent = `Player Score: ${playerScore}`;
+    comScore.textContent = `Computer Score: ${compScore}`;
     checkMatch(playerScore, compScore);
 }
 
